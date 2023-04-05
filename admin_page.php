@@ -9,8 +9,6 @@ if(!isset($_SESSION['admin_name'])){
    if(!isset($_SESSION['user_name'])){
       header('location:login_form.php');
    }
-
-
 }?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,9 +46,7 @@ if(!isset($_SESSION['admin_name'])){
 <body>
    
 <div class="container">
-
    <div class="content">
-      <h3>hi, <span>admin</span></h3>
       <h1>welcome <span><?php echo $_SESSION['admin_name'] ?></span></h1>
       <p>Admin page</p>
       <?php
@@ -63,22 +59,7 @@ $result = mysqli_query($conn, $sql);
 echo "<table>";
 echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr>";
 
-while ($row = mysqli_fetch_assoc($result)) {
- echo "<tr>";
- echo "<td>" . $row['id'] . "</td>";
- echo "<td>" . $row['name'] . "</td>";
- echo "<td>" . $row['email'] . "</td>";
- echo "<td>" . $row['user_type'] . "</td>";
- echo "<td><a href='delete_user.php?id=" . $row['id'] . "'>Delete</a></td>";
- echo "<td><a href='edit_user.php?id=" . $row['id'] . "'>Edit</a></td>";
- echo "</tr>";
-}
-
-echo "</table>";
-?>
-      <a href="login_form.php" class="btn">login</a>
-      <a href="register_form.php" class="btn">register</a>
-      <a href="logout.php" class="btn">logout</a>
+   
    </div>
 
 </div>
