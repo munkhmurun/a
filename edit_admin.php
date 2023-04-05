@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
    $result = mysqli_query($conn, $sql);
 
    // Redirect the user to the admin page
-   header("Location: user_page.php");
+   header("Location: admin_page.php");
 }
 
 ?>

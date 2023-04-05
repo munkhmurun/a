@@ -41,20 +41,48 @@ if(!isset($_SESSION['user_name'])){
       tr:nth-child(even) {
          background-color: #f2f2f2;
       }
+      .container {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+}
+.navbar {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  display: flex;
+}
+
+.navbar-item {
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item:hover {
+  background-color: #ddd;
+}
    </style>
 
 </head>
 <body>
    
 <div class="container">
-
+<div class="container">
+   <nav class="navbar">
+      <a href="Publishednews.php" class="navbar-item">view news</a>
+      <a href="logout.php" class="navbar-item">Logout</a>
+   </nav> 
    <div class="content">
-      <h3>hi, <span>user</span></h3>
-      <h1>welcome <span><?php echo $_SESSION['user_name'] ?></span></h1>
-      <p>this is an user page</p>
-      <a href="login_form.php" class="btn">login</a>
-      <a href="register_form.php" class="btn">register</a>
-      <a href="logout.php" class="btn">logout</a>
+   <h1><span><?php echo $_SESSION['user_name'] ?></span></h1>
+      <p>user information</p>
       <?php
 
       // Өгөгдлийн сангаас одоогийн хэрэглэгчийг хайна.

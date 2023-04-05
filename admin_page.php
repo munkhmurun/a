@@ -6,10 +6,8 @@ session_start();
 
 if(!isset($_SESSION['admin_name'])){
    header('location:login_form.php');
-   if(!isset($_SESSION['user_name'])){
-      header('location:login_form.php');
-   }
-}?>
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,24 +39,79 @@ if(!isset($_SESSION['admin_name'])){
       tr:nth-child(even) {
          background-color: #f2f2f2;
       }
+      .container {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+}
+.navbar {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  display: flex;
+}
+
+.navbar-item {
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item:hover {
+  background-color: #ddd;
+}
+
    </style>
 </head>
 <body>
-   
+<form method="get" action="">
+  <label for="search">Search Title:</label>
+  <input type="text" id="search" name="search">
+  <button type="submit">Search</button>
+</form>
 <div class="container">
+   <nav class="navbar">
+      <a href="user_profile.php" class="navbar-item">Users profile</a>
+      <a href="newscreate.php" class="navbar-item">Create News</a>
+      <a href="admin_profile.php" class="navbar-item">Profile</a>
+      <a href="Publishednews.php" class="navbar-item">show news</a>
+      <a href="shownews.php" class="navbar-item">drafts</a>
+      <a href="register_form.php" class="navbar-item">Register</a>
+      <a href="logout.php" class="navbar-item">Logout</a>
+   </nav> 
+  
    <div class="content">
       <h1>welcome <span><?php echo $_SESSION['admin_name'] ?></span></h1>
       <p>Admin page</p>
+      
       <?php
+// Get the search term from the GET request
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Select all users from the database
-$sql = "SELECT * FROM user_form";
+// Select all news articles that match the search term
+$sql = "SELECT * FROM news_form WHERE status = 1 AND title LIKE '%$searchTerm%'";
 $result = mysqli_query($conn, $sql);
 
-// Display user information in a table
-echo "<table>";
-echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr>";
+if(mysqli_num_rows($result) == 0) {
+  echo "Ийм гарчигтай мэдээ олдсонгүй.";
+} else {
+  $i = 1; // initialize the counter
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
+    echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
 
+    echo "</form>";
+    $i++; // increment the counter after each iteration
+  }
+}
+?>
    
    </div>
 

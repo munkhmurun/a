@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
   if(count($errors) === 0){
 
     // Hash the new password
-    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+    $hashed_password = md5($_POST['new_password']);
 
     // Update the user's password in the database
     $sql = "UPDATE user_form SET password='$hashed_password' WHERE name='" . $_SESSION['user_name'] . "'";
