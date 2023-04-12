@@ -69,12 +69,51 @@ if(!isset($_SESSION['user_name'])){
 .navbar-item:hover {
   background-color: #ddd;
 }
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0052a3;
+}
    </style>
 
 </head>
 <body>
-   
+
 <div class="container">
+<form method="get" action="" class="search-form">
+  <label for="search">Search Title:</label>
+  <input type="text" id="search" name="search" placeholder="Мэдээгээ хайна уу?">
+  <button type="submit">Search</button>
+</form>
 <div class="container">
    <nav class="navbar">
       <a href="Publishednews.php" class="navbar-item">view news</a>
@@ -110,6 +149,29 @@ if(!isset($_SESSION['user_name'])){
 
       echo "</table>";
       ?>
+            <?php
+// Get the search term from the GET request
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+if (!empty($searchTerm)) {
+  // Select all news articles that match the search term
+  $sql = "SELECT * FROM news_form WHERE status = 1 AND title LIKE '%$searchTerm%'";
+  $result = mysqli_query($conn, $sql);
+
+  if(mysqli_num_rows($result) == 0) {
+    echo "Ийм гарчигтай мэдээ олдсонгүй.";
+  } else {
+    $i = 1; // initialize the counter
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
+      echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
+
+      echo "</form>";
+      $i++; // increment the counter after each iteration
+    }
+  }
+}
+?>
    </div>
 
 </div>

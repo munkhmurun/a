@@ -70,14 +70,13 @@ if(!isset($_SESSION['admin_name'])){
             // Display the requested news article
             echo "<div class='news-item'>";
             echo "<p>" . $row['body'] . "</p>";
+            
             echo "</div>";
         } else {
             // Display an error message if the requested news article doesn't exist
             echo "<p>Error: News article not found</p>";
         }
     } 
-    
-
     ?>
 </div>
 

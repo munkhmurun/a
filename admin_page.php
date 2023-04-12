@@ -67,15 +67,50 @@ if(!isset($_SESSION['admin_name'])){
 .navbar-item:hover {
   background-color: #ddd;
 }
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0052a3;
+}
 
    </style>
 </head>
 <body>
-<form method="get" action="">
+<form method="get" action="" class="search-form">
   <label for="search">Search Title:</label>
-  <input type="text" id="search" name="search">
+  <input type="text" id="search" name="search" placeholder="Мэдээгээ хайна уу?">
   <button type="submit">Search</button>
 </form>
+
 <div class="container">
    <nav class="navbar">
       <a href="user_profile.php" class="navbar-item">Users profile</a>
@@ -83,7 +118,8 @@ if(!isset($_SESSION['admin_name'])){
       <a href="admin_profile.php" class="navbar-item">Profile</a>
       <a href="Publishednews.php" class="navbar-item">show news</a>
       <a href="shownews.php" class="navbar-item">drafts</a>
-      <a href="register_form.php" class="navbar-item">Register</a>
+      <a href="gender.php" class="navbar-item">pie gender graph</a>
+      <a href="news_chart.php" class="navbar-item">news chart</a>
       <a href="logout.php" class="navbar-item">Logout</a>
    </nav> 
   
@@ -95,23 +131,26 @@ if(!isset($_SESSION['admin_name'])){
 // Get the search term from the GET request
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Select all news articles that match the search term
-$sql = "SELECT * FROM news_form WHERE status = 1 AND title LIKE '%$searchTerm%'";
-$result = mysqli_query($conn, $sql);
+if (!empty($searchTerm)) {
+  // Select all news articles that match the search term
+  $sql = "SELECT * FROM news_form WHERE status = 1 AND title LIKE '%$searchTerm%'";
+  $result = mysqli_query($conn, $sql);
 
-if(mysqli_num_rows($result) == 0) {
-  echo "Ийм гарчигтай мэдээ олдсонгүй.";
-} else {
-  $i = 1; // initialize the counter
-  while ($row = mysqli_fetch_assoc($result)) {
-    echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
-    echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
+  if(mysqli_num_rows($result) == 0) {
+    echo "Ийм гарчигтай мэдээ олдсонгүй.";
+  } else {
+    $i = 1; // initialize the counter
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
+      echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
 
-    echo "</form>";
-    $i++; // increment the counter after each iteration
+      echo "</form>";
+      $i++; // increment the counter after each iteration
+    }
   }
 }
 ?>
+
    
    </div>
 

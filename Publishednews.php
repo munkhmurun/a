@@ -21,58 +21,81 @@ if(!isset($_SESSION['admin_name'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            font-size: 36px;
-            margin-top: 50px;
-        }
-        h2 {
-            font-size: 28px;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.5;
-        }
-        .news-section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            background-color: #fff;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        }
-        img{
-            width: 800px;
-            height: 500px;
-        }
-        .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    <style>body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.news-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.news-item {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.news-item img {
+  width: 200px;
+  height: 150px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.news-item h3 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.news-item p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .pagination a {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    color: #333;
-    text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #333;
+  text-decoration: none;
 }
 
 .pagination a:hover,
 .pagination a.active {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
 }
 
     </style>
@@ -94,8 +117,7 @@ if(!isset($_SESSION['admin_name'])){
         echo "<div class='news-item'>";
         echo "<h2>" . $row['title'] . "</h2>";
         echo "<img src='" . $row['image_url'] . "' alt='news image'>";
-        echo "<p>" . $row['body'] . "</p>";
-        echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
+        echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Цааш унших</a>";
         echo "</div>";
     }
 
@@ -112,8 +134,5 @@ if(!isset($_SESSION['admin_name'])){
 
     ?>
 </div>
-
-
-
 </body>
 </html>

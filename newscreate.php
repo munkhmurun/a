@@ -5,14 +5,16 @@
 if(isset($_POST['submit'])){
 
   // Get the form input
+  
   $title = mysqli_real_escape_string($conn, $_POST['title']);
   $body = mysqli_real_escape_string($conn, $_POST['body']);
   $image_url = mysqli_real_escape_string($conn, $_POST['image_url']);
   $Created_date = date('Y-m-d H:i:s');
+  $type = mysqli_real_escape_string($conn, $_POST['type']);
 
 
   // Insert the news into the database
-  $query = "INSERT INTO news_form (title, body, image_url, status, user_id, Created_date) VALUES ('$title', '$body', '$image_url', '0', 16, '$Created_date')";
+  $query = "INSERT INTO news_form (title, body, image_url, status, user_id, Created_date, type) VALUES ('$title', '$body', '$image_url', '0', 16, '$Created_date', '$type')";
 
   if(mysqli_query($conn, $query)){
       echo "News created successfully";
@@ -63,20 +65,23 @@ tinymce.init({
     }
   }
   ?>
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title" required placeholder="news item title">
-  <br>
-  <label for="image_url">Image URL:</label>
-<input type="text" id="image_url" name="image_url" placeholder="news item image URL">
+ <label for="title">Title:</label>
+<input type="text" id="title" name="title" required placeholder="News item title">
+<br>
+<label for="image_url">Image URL:</label>
+<input type="text" id="image_url" name="image_url" placeholder="News item image URL">
+<br>
+<label for="type">Төрөл:</label>
+<select id="type" name="type">
+  <option value="Үзвэр үйлчилгээ">Үзвэр үйлчилгээ</option>
+  <option value="Улс төр">Улс төр</option>
+</select>
 <br>
 <label for="body">Body:</label>
-<textarea id="body" name="body" placeholder="энд мэдээгээ оруулна уу."></textarea>  
+<textarea id="body" name="body" placeholder="Enter news content"></textarea>  
+<button type="submit" name="submit">Create news</button>
 
-
-  <button type="submit" name="submit">Create news</button>
 </form>
-
-
 </div>
 </body>
 </html>
