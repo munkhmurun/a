@@ -84,7 +84,7 @@ $sql = "SELECT * FROM user_form WHERE name='" . $_SESSION['admin_name'] . "'";
 $result = mysqli_query($conn, $sql);
 
 echo "<table>";
-echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr>";
+echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Edit</th><th>password</th></tr>";
 
 while ($row = mysqli_fetch_assoc($result)) {
    echo "<tr>";

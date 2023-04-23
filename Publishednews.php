@@ -21,59 +21,45 @@ if(!isset($_SESSION['admin_name'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News</title>
-    <style>body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  color: #333;
-}
-
-h1 {
-  text-align: center;
-  font-size: 36px;
-  margin-top: 50px;
-}
-
-h2 {
-  font-size: 28px;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-p {
-  font-size: 18px;
-  line-height: 1.5;
-}
-
+    <style>
+/* Style for the news section */
 .news-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 50px;
-  background-color: #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
 }
 
+/* Style for each news item */
 .news-item {
-  display: flex;
-  margin-bottom: 30px;
+    width: 48%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.news-item h2 {
+    font-size: 24px;
+    margin-top: 0;
 }
 
 .news-item img {
-  width: 200px;
-  height: 150px;
-  margin-right: 20px;
-  object-fit: cover;
+    width: 100%;
+    height: 356px;
+    margin-bottom: 10px;
 }
 
-.news-item h3 {
-  font-size: 24px;
-  margin-top: 0;
+.news-item a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
 }
 
-.news-item p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.5;
+.news-item a:hover {
+    background-color: #e63e00;
 }
 
 .pagination {

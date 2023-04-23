@@ -98,6 +98,20 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0052a3;
 }
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+h1 span {
+  color: #007bff;
+}
+
+p {
+  font-size: 18px;
+  text-align: center;
+}
 
    </style>
 </head>
