@@ -1,86 +1,82 @@
-/* Body styles */
-body {
-   margin: 0;
-   padding: 0;
-   font-family: Arial, sans-serif;
+table {
+   border-collapse: collapse;
+   width: 100%;
+   margin: 0 auto;
+   margin-top: 2rem;
+}
+
+th, td {
+   text-align: left;
+   padding: 0.5rem;
+}
+
+th {
+   background-color: #4CAF50;
+   color: white;
+}
+
+tr:nth-child(even) {
    background-color: #f2f2f2;
 }
-
-/* Form container styles */
-.form-container {
-   width: 400px;
-   margin: 50px auto;
-   padding: 20px;
-   background-color: #fff;
-   border-radius: 10px;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.container {
+display: flex;
+align-content: stretch;
+flex-wrap: nowrap;
+justify-content: flex-start;
+flex-direction: column;
+align-items: stretch;
+}
+.navbar {
+background-color: #f2f2f2;
+border: 1px solid #ddd;
+padding: 1rem;
+display: flex;
 }
 
-/* Form heading styles */
-.form-container h3 {
-   margin-top: 0;
-   text-align: center;
+.navbar-item {
+margin: 0 0.5rem;
+padding: 0.5rem;
+border-radius: 4px;
+text-align: center;
+text-decoration: none;
+color: #333;
+transition: background-color 0.3s ease;
 }
 
-/* Error message styles */
-.error-msg {
-   display: block;
-   margin: 5px 0 10px;
-   color: red;
-   font-size: 14px;
+.navbar-item:hover {
+background-color: #ddd;
+}
+.search-form {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 20px 0;
 }
 
-/* Form input styles */
-.form-container input[type="text"],
-.form-container input[type="email"],
-.form-container input[type="password"],
-.form-container select {
-   display: block;
-   width: 100%;
-   margin-bottom: 15px;
-   padding: 10px;
-   border-radius: 5px;
-   border: none;
+label {
+font-size: 18px;
+font-weight: bold;
+margin-right: 10px;
 }
 
-/* Form select styles */
-.form-container select {
-   background-color: #f2f2f2;
+input[type="text"] {
+padding: 10px;
+font-size: 16px;
+border: 2px solid #ccc;
+border-radius: 5px;
+flex: 1;
 }
 
-/* Form button styles */
-.form-btn {
-   display: block;
-   width: 100%;
-   margin-top: 20px;
-   padding: 10px;
-   border-radius: 5px;
-   border: none;
-   background-color: #007bff;
-   color: #fff;
-   font-size: 16px;
-   cursor: pointer;
-   transition: background-color 0.3s ease-in-out;
+button[type="submit"] {
+padding: 10px 20px;
+background-color: #0066cc;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
-/* Form button hover styles */
-.form-btn:hover {
-   background-color: #0069d9;
-}
-
-/* Form paragraph styles */
-.form-container p {
-   margin-top: 20px;
-   text-align: center;
-}
-
-/* Form link styles */
-.form-container a {
-   color: #007bff;
-   text-decoration: none;
-}
-
-/* Form link hover styles */
-.form-container a:hover {
-   text-decoration: underline;
+button[type="submit"]:hover {
+background-color: #0052a3;
 }

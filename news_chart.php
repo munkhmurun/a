@@ -12,7 +12,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Type', 'Count'],
           <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'user_db');
+            $conn = mysqli_connect('localhost', 'root', '', 'muruu');
             $result = mysqli_query($conn, "SELECT type, COUNT(*) as count FROM news_form GROUP BY type");
 
             while ($row = mysqli_fetch_assoc($result)) {

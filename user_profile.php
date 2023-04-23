@@ -85,7 +85,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 echo "</table>";
 ?> 
-    
+           <form method="post" action="excel.php">
+        <input type="submit" name="export" class="btn btn-outline-light ms-2" value="хэрэглэгчдийн мэдээлэл татах" />
+        </form>
    </div>
 
 </div>

@@ -15,9 +15,6 @@ if(!isset($_SESSION['admin_name'])){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>admin page</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
    <style>
       table {
          border-collapse: collapse;
@@ -128,32 +125,30 @@ button[type="submit"]:hover {
       <p>Admin page</p>
       
       <?php
-// Get the search term from the GET request
+
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
 if (!empty($searchTerm)) {
-  // Select all news articles that match the search term
+ 
   $sql = "SELECT * FROM news_form WHERE status = 1 AND title LIKE '%$searchTerm%'";
   $result = mysqli_query($conn, $sql);
 
   if(mysqli_num_rows($result) == 0) {
     echo "Ийм гарчигтай мэдээ олдсонгүй.";
   } else {
-    $i = 1; // initialize the counter
+    $i = 1; 
     while ($row = mysqli_fetch_assoc($result)) {
       echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
       echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
 
       echo "</form>";
-      $i++; // increment the counter after each iteration
+      $i++;
     }
   }
 }
-?>
-
-   
+?> 
    </div>
-
 </div>
 </body>
 </html>
+

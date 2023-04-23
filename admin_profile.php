@@ -18,68 +18,71 @@ if(!isset($_SESSION['admin_name'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-   <style>
-      table {
-         border-collapse: collapse;
-         width: 100%;
-         margin: 0 auto;
-         margin-top: 2rem;
-      }
-
-      th, td {
-         text-align: left;
-         padding: 0.5rem;
-      }
-
-      th {
-         background-color: #4CAF50;
-         color: white;
-      }
-
-      tr:nth-child(even) {
-         background-color: #f2f2f2;
-      }
-      .container {
-    display: flex;
-    align-content: stretch;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: stretch;
-}
-.navbar {
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  display: flex;
-}
-
-.navbar-item {
-  margin: 0 0.5rem;
-  padding: 0.5rem;
-  border-radius: 4px;
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-item:hover {
-  background-color: #ddd;
-}
-
-   </style>
 </head>
+<style>
+   table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #555;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  color: blue;
+}
+div {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+  color: #4CAF50;
+}
+
+
+</style>
 <body>
    
-
+   <div>
       <?php
 
-// Өгөгдлийн сангаас одоогийн хэрэглэгчийг хайна.
 $sql = "SELECT * FROM user_form WHERE name='" . $_SESSION['admin_name'] . "'";
 $result = mysqli_query($conn, $sql);
 
-// Display the user's account information in a table
 echo "<table>";
 echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr>";
 
@@ -100,9 +103,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 echo "</table>";
 ?>
-   
    </div>
-
-</div>
 </body>
 </html>
