@@ -116,11 +116,6 @@ p {
    </style>
 </head>
 <body>
-<form method="get" action="" class="search-form">
-  <label for="search">Search Title:</label>
-  <input type="text" id="search" name="search" placeholder="Мэдээгээ хайна уу?">
-  <button type="submit">Search</button>
-</form>
 
 <div class="container">
    <nav class="navbar">
@@ -137,30 +132,6 @@ p {
    <div class="content">
       <h1>welcome <span><?php echo $_SESSION['admin_name'] ?></span></h1>
       <p>Admin page</p>
-      
-      <?php
-
-$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-
-if (!empty($searchTerm)) {
- 
-  $sql = "SELECT * FROM news_form WHERE status = 1 AND title LIKE '%$searchTerm%'";
-  $result = mysqli_query($conn, $sql);
-
-  if(mysqli_num_rows($result) == 0) {
-    echo "Ийм гарчигтай мэдээ олдсонгүй.";
-  } else {
-    $i = 1; 
-    while ($row = mysqli_fetch_assoc($result)) {
-      echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
-      echo "<a href='news_id.php?news_id=" . $row['id'] . "'>Read More</a>";
-
-      echo "</form>";
-      $i++;
-    }
-  }
-}
-?> 
    </div>
 </div>
 </body>

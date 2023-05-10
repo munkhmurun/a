@@ -4,10 +4,6 @@
 
 session_start();
 
-if(!isset($_SESSION['user_name'])){
-   header('location:login_form.php');
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -116,6 +112,8 @@ button[type="submit"]:hover {
 </form>
 <div class="container">
    <nav class="navbar">
+   <a href="newscreate.php" class="navbar-item">Create News</a>
+   <a href="shownews.php" class="navbar-item">drafts</a>
       <a href="Publishednews.php" class="navbar-item">view news</a>
       <a href="logout.php" class="navbar-item">Logout</a>
    </nav> 

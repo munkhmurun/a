@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 
 
   // Insert the news into the database
-  $query = "INSERT INTO news_form (title, body, image_url, status, user_id, Created_date, type) VALUES ('$title', '$body', '$image_url', '0', 16, '$Created_date', '$type')";
+  $query = "INSERT INTO news_form (title, body, image_url, status, user_id, Created_date, type) VALUES ('$title', '$body', '$image_url', '0', 1, '$Created_date', '$type')";
 
   if(mysqli_query($conn, $query)){
       echo "News created successfully";
@@ -39,16 +39,7 @@ mysqli_close($conn);
 
     <!-- Include the TinyMCE library -->
     <script src="https://cdn.tiny.cloud/1/3iodql82bev57mfn37jcfqn7miqfbrfc0ge1hwhgg9y67l0t/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-// Initialize the TinyMCE editor
-tinymce.init({
-  selector: '#body', // The ID of the textarea element
-  plugins: 'advlist autolink lists link image charmap print preview anchor',
-  toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | image',
-  height: 300, // The height of the editor in pixels
-  required: true // Make the editor required
-});
-</script>
+
 
 
 </head>
@@ -78,7 +69,7 @@ tinymce.init({
 </select>
 <br>
 <label for="body">Body:</label>
-<textarea id="body" name="body" placeholder="Enter news content"></textarea>  
+<textarea id="body" name="body" rows="5" cols="50" placeholder="Enter news content"></textarea>
 <button type="submit" name="submit">Create news</button>
 
 </form>

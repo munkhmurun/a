@@ -63,9 +63,9 @@ if(!isset($_SESSION['admin_name'])){
         $sql = "SELECT * FROM news_form WHERE status = 0";
         $result = mysqli_query($conn, $sql);
 
-// Display news articles in a list
-$i = 1; // initialize the counter
-while ($row = mysqli_fetch_assoc($result)) {
+    // Display news articles in a list
+    $i = 1; // initialize the counter
+    while ($row = mysqli_fetch_assoc($result)) {
     echo "<h2>" . $i . ". " . $row['title'] . "</h2>";
     echo "<p>" . $row['body'] . "</p>";
     echo "<form method='post'>";
